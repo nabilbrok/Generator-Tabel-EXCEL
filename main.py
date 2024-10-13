@@ -53,12 +53,24 @@ daftar_perangkat = [
 ]
 
 # Fungsi untuk memilih perangkat yang digunakan
+# Fungsi untuk memilih perangkat yang digunakan
 def pilih_perangkat(jumlah):
     # Memastikan perangkat yang harus digunakan selalu ada dalam daftar
     perangkat_harus_digunakan = [p for p in daftar_perangkat if p['harus_digunakan']]
+    total_harus_digunakan = len(perangkat_harus_digunakan)
+
+    # Memastikan jumlah yang diminta cukup untuk perangkat yang harus digunakan
+    if jumlah < total_harus_digunakan:
+        raise ValueError(f"Jumlah perangkat harus minimal {total_harus_digunakan} (termasuk perangkat yang harus digunakan).")
+
     perangkat_acak = [p for p in daftar_perangkat if not p['harus_digunakan']]
-    perangkat_terpilih = random.sample(perangkat_acak, jumlah - len(perangkat_harus_digunakan))
+    jumlah_perangkat_acak = jumlah - total_harus_digunakan
+
+    # Mengambil perangkat acak sesuai jumlah yang diminta
+    perangkat_terpilih = random.sample(perangkat_acak, jumlah_perangkat_acak) if jumlah_perangkat_acak > 0 else []
+
     return perangkat_harus_digunakan + perangkat_terpilih
+
 
 # Fungsi untuk menghitung kWh
 def hitung_kwh(watt, jam_per_hari):
@@ -139,7 +151,10 @@ def buat_tabel_terstruktur(sheet):
 # Fungsi utama
 def main():
     try:
-        jumlah_perangkat = int(input("Masukkan jumlah perangkat di rumah (misal 10 atau 20): "))
+        # Menentukan jumlah perangkat yang harus digunakan
+        jumlah_perangkat_harus_digunakan = sum(1 for p in daftar_perangkat if p['harus_digunakan'])
+        
+        jumlah_perangkat = int(input("Masukkan jumlah perangkat di rumah (minimal {}): ".format(jumlah_perangkat_harus_digunakan)))
         if jumlah_perangkat <= 0:
             print("Jumlah perangkat harus lebih dari 0.")
             return
@@ -172,10 +187,8 @@ def main():
         buat_excel(nama_file, data_perangkat)
 
         print(f"File '{nama_file}' berhasil dibuat.")
-    except ValueError:
-        print("Input tidak valid. Pastikan untuk memasukkan angka yang benar.")
+    except ValueError as ve:
+        print(f"Input tidak valid: {ve}")
 
 if __name__ == "__main__":
     main()
-
-input("File mu tersimpan.")
