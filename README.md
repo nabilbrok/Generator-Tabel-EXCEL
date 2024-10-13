@@ -1,7 +1,7 @@
 
 # Generator Tabel Excel Fisika Otomatis
 
-Jadi ini adalah projek pertama saya di github, projek yang merupakan permasalahan saya di real life yaitu tugas fisika saya. Jadi saya membuat skrip ini untuk meng "automate" pekerjaan saya.
+Jadi ini adalah projek pertama saya di github, projek yang merupakan penyelesaian permasalahan saya di real life yaitu tugas fisika saya. Jadi saya membuat skrip ini untuk meng "automate" pekerjaan saya.
 
 
 
