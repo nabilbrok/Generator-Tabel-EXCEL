@@ -7,7 +7,7 @@ Jadi ini adalah projek pertama saya di github, projek yang merupakan penyelesaia
 
 
 ## 🚀 About Me
-Nama saya Nabil Galen Alfadzi, saya adalah seorang siswa di Sekolah Menengah Atas Negeri 1 Tembilahan. Di sekolah, saya memasuki Jurusan IPA. Saya adalah seorang pemula didalam dunia coding.
+Nama saya Nabil, saya adalah seorang siswa di salah satu sekolah di Indragiri Hilir. Di sekolah, saya memasuki Jurusan IPA. Saya adalah seorang pemula didalam dunia coding.
 
 
 ## Alat yang saya gunakan
