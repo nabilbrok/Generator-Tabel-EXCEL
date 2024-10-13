@@ -1,3 +1,21 @@
+import subprocess
+import sys
+
+# Fungsi untuk menginstal pustaka jika belum ada
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+# Daftar pustaka yang dibutuhkan
+required_packages = ['pandas', 'openpyxl']
+
+# Memeriksa dan menginstal setiap pustaka yang dibutuhkan
+for package in required_packages:
+    try:
+        __import__(package)
+    except ImportError:
+        print(f"{package} tidak ditemukan, menginstal...")
+        install(package)
+
 import random
 import pandas as pd
 import os
